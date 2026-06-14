@@ -1,0 +1,49 @@
+services:
+  - type: web
+    name: stash-backend
+    runtime: docker
+    plan: free
+    autoDeploy: true
+    healthCheckPath: /health
+    envVars:
+      - key: DEBUG
+        value: "False"
+      - key: ENABLE_ML_WARMUP
+        value: "False"
+      - key: ENABLE_SCHEDULER
+        value: "False"
+      # Render exposes RENDER_EXTERNAL_URL, so Telegram webhook registration can work automatically here.
+      - key: ENABLE_TELEGRAM_WEBHOOK
+        value: "True"
+      - key: CORS_ORIGINS
+        value: "https://stash--sam-sang-493608.us-central1.hosted.app/"
+      - key: FRONTEND_URL
+        value: "https://stash--sam-sang-493608.us-central1.hosted.app/"
+      - key: BACKEND_URL
+        sync: false
+      - key: RENDER_EXTERNAL_URL
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: GOOGLE_AI_API_KEY
+        sync: false
+      - key: GOOGLE_CLOUD_PROJECT
+        sync: false
+      - key: GOOGLE_APPLICATION_CREDENTIALS_JSON
+        sync: false
+      - key: FIRESTORE_DATABASE
+        value: "stash"
+      - key: TWILIO_ACCOUNT_SID
+        sync: false
+      - key: TWILIO_AUTH_TOKEN
+        sync: false
+      - key: TWILIO_PHONE_NUMBER
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_WEBHOOK_SECRET
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false

@@ -1,0 +1,60 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: stash-backend
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "0"
+    spec:
+      containerConcurrency: 80
+      timeoutSeconds: 300
+      containers:
+        - image: gcr.io/PROJECT_ID/stash-backend:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DEBUG
+              value: "False"
+            - name: ENABLE_ML_WARMUP
+              value: "False"
+            - name: ENABLE_SCHEDULER
+              value: "False"
+            # Only one deployed environment should register the webhook for a given bot token.
+            - name: ENABLE_TELEGRAM_WEBHOOK
+              value: "True"
+            - name: CORS_ORIGINS
+              value: "https://stash--sam-sang-493608.us-central1.hosted.app/"
+            - name: FRONTEND_URL
+              value: "https://stash--sam-sang-493608.us-central1.hosted.app/"
+            - name: BACKEND_URL
+              value: ""
+            - name: CLOUD_RUN_SERVICE_URL
+              value: ""
+            - name: TELEGRAM_WEBHOOK_URL
+              value: ""
+            - name: REDIS_URL
+              value: ""
+            - name: SECRET_KEY
+              value: "CHANGE_ME"
+            - name: GOOGLE_AI_API_KEY
+              value: ""
+            - name: GOOGLE_CLOUD_PROJECT
+              value: ""
+            - name: GOOGLE_APPLICATION_CREDENTIALS_JSON
+              value: ""
+            - name: FIRESTORE_DATABASE
+              value: "stash"
+            - name: TWILIO_ACCOUNT_SID
+              value: ""
+            - name: TWILIO_AUTH_TOKEN
+              value: ""
+            - name: TWILIO_PHONE_NUMBER
+              value: ""
+            - name: TELEGRAM_BOT_TOKEN
+              value: ""
+            - name: TELEGRAM_WEBHOOK_SECRET
+              value: ""
+            - name: TELEGRAM_CHAT_ID
+              value: ""
