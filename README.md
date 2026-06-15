@@ -45,16 +45,6 @@
 
 ---
 
-## Sustainable Development Goals (SDGs)
-
-This product is committed to and supports the following **Sustainable Development Goals**:
-*   **SDG 8:** Decent Work and Economic Growth
-*   **SDG 9:** Industry, Innovation, and Infrastructure
-*   **SDG 12:** Responsible Consumption and Production
-*   **SDG 13:** Climate Action
-
----
-
 ## Setup Instructions
 
 #### 1. Clone the repository
