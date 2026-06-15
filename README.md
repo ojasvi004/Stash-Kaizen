@@ -49,8 +49,8 @@
 
 #### 1. Clone the repository
 ```bash
-git clone https://github.com/shwet46/Stash.git
-cd Stash
+git clone https://github.com/ojasvi004/Stash-Kaizen.git
+cd Stash-Kaizen
 cp .env.example .env
 ```
 
